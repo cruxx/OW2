@@ -13,11 +13,11 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 
 ### Below are steps to build and configure OpenWRT:
 
-1) If you start from scratch, first you need to install all required packets. Below is Ubuntu-1404LTS-64bit example:
+0) If you start from scratch, first you need to install all required packets. Below is Ubuntu-1404LTS-64bit example:
 
 `sudo apt-get install git build-essential subversion libncurses5-dev zlib1g-dev gawk`
 
-2) Download the latest OpenWRT repo snapshot and all feeds by following commands:
+1) Download the latest OpenWRT repo snapshot and all feeds by following commands:
 
 `git clone git://git.openwrt.org/openwrt.git`
 
@@ -27,12 +27,13 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 
 `./scripts/feeds install -a`
 
-3) Perform `make menuconfig` and go to "Target Profile" in the main menu. Select "TP-LINK TL-MR3020" or "-3040", according to your hardware. Exit by pressing ESC ESC two time and confirm saving the config.
-4. Perform `make defconfig` (that creates general configuration of the build system including a check of dependencies and prerequisites for your selected system
-5. Now you can already build your system with default settings/environment (it can take from 1 to 3 hours depend on your host performance, internet connection speed and other factors...
+2) Perform `make menuconfig` and go to "Target Profile" in the main menu. Select "TP-LINK TL-MR3020" or "-3040", according to your hardware. Exit by pressing ESC ESC two time and confirm saving the config.
+3) Perform `make defconfig` (that creates general configuration of the build system including a check of dependencies and prerequisites for your selected system
+4) Now you can already build your system with default settings/environment (it can take from 1 to 3 hours depend on your host performance, internet connection speed and other factors...
+
 `time make`
 
-6. `make menuconfig` and select:
+5) `make menuconfig` and select:
 - Base System -> block-mount (\*)
 - Base System -> Boot Loaders -> uboot ( )   *<--  remove selection*
 - Kernel Modules -> Filesystems -> kmod-fs-ext4 (\*)
@@ -53,6 +54,6 @@ Also you can select a lot of additional items depend of what you need for your e
 - Utilities -> haserl (M)
 - Utilities -> oww (M)
 
-7. `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
+6) `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
 
 
