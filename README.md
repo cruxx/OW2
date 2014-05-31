@@ -13,6 +13,10 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 
 ### Below are steps to build and configure OpenWRT:
 
+0. If you start from skratch, first need to install all required packets. Below is Ubuntu 1404LTS example:
+
+`sudo apt-get install git`
+
 1. Download the latest OpenWRT repo snapshot and all feeds by following commands:
 
 `git clone git://git.openwrt.org/openwrt.git`
