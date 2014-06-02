@@ -15,16 +15,13 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 
 0)  If you start from scratch, first you need to install all required packets. Check http://wiki.openwrt.org/doc/howto/buildroot.exigence for prerequisites for your exact system. Below is Ubuntu-1404LTS-64bit example:
 
-`sudo apt-get install git-core build-essential subversion libncurses5-dev zlib1g-dev gawk gcc-multilib flex`
+`sudo apt-get install git-core build-essential subversion libncurses5-dev zlib1g-dev gawk intltool gcc-multilib flex`
 
 1)  Download the latest OpenWRT repo snapshot and all feeds by following commands:
 
 `git clone git://git.openwrt.org/openwrt.git`
-
 `cd openwrt`
-
 `./scripts/feeds update -a`
-
 `./scripts/feeds install -a`
 
 2)  Perform `make menuconfig` and go to "Target Profile" in the main menu. Select "TP-LINK TL-MR3020" or "-3040", according to your hardware. Exit by pressing ESC ESC two time and confirm saving the config.
@@ -57,5 +54,6 @@ Also you can select a lot of additional items depend of what you need for your e
 - Utilities -> oww (M)
 
 6)  `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
+If build process aborts with error (of course not related with unavailable downloads) - some time it helps full rebuild: `make dirclean`
 
 
