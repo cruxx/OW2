@@ -19,10 +19,10 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 
 1)  Download the latest OpenWRT repo snapshot and all feeds by following commands:
 
-`git clone git://git.openwrt.org/openwrt.git` 
-`cd openwrt` 
-`./scripts/feeds update -a` 
-`./scripts/feeds install -a` 
+`git clone git://git.openwrt.org/openwrt.git
+cd openwrt
+./scripts/feeds update -a
+./scripts/feeds install -a` 
 
 2)  Perform `make menuconfig` and go to "Target Profile" in the main menu. Select "TP-LINK TL-MR3020" or "-3040", according to your hardware. Exit by pressing ESC ESC two time and confirm saving the config.
 
@@ -53,7 +53,14 @@ Also you can select a lot of additional items depend of what you need for your e
 - Utilities -> haserl (M)
 - Utilities -> oww (M)
 
-6)  `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files* 
-If build process aborts with error (of course not related with unavailable downloads) - some time it helps full rebuild: `make dirclean`
+6)  Create file ` ~openwrt/files/etc/config/fstab` and ......
+
+7)  `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files* 
+If build process aborts with error (of course not related with unavailable downloads) - sometimes it helps full rebuild: `make dirclean` and then `make` again
+
+8)  After the build process completed successfully - you can install OpenWrt "\*-squashfs-factory.bin" firmware from `~openwrt/bin/ar71xx/` using manufacturer's WebGUI like a regular firmware update. Wait for the progress bar to finish twice (the device will reset itself in the process).
+If your device is already on OpenWrt - just copy the firmware .bin file to `/tmp` and perform `mtd -r write /tmp/your_firmware_file.bin firmware`
+
+9)  connect ethernet directly to you device and perform `telnet 192.168.1.1`. Now you need to edit /etc/config/fstab file in order to have overlay filesystem on USB flash drive.
 
 
