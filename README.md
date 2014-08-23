@@ -48,6 +48,7 @@ Also you can select a lot of additional items depend of what you need for your e
 - Utilities -> digitemp (M)
 - Utilities -> haserl (M)
 - Utilities -> oww (M)
+- Utilities -> file (M)
 6. `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
 
 
