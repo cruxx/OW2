@@ -13,22 +13,26 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 
 ### Below are steps to build and configure OpenWRT:
 
-1. Download the latest OpenWRT repo snapshot and all feeds by following commands:
+0)  If you start from scratch, first you need to install all required packets. Check http://wiki.openwrt.org/doc/howto/buildroot.exigence for prerequisites for your exact system. Below is Ubuntu-1404LTS-64bit example:
 
-`git clone git://git.openwrt.org/openwrt.git`
+`sudo apt-get install git-core build-essential subversion libncurses5-dev zlib1g-dev gawk intltool gcc-multilib flex`
 
-`cd openwrt`
+1)  Download the latest OpenWRT repo snapshot and all feeds by following commands:
 
-`./scripts/feeds update -a`
+`git clone git://git.openwrt.org/openwrt.git`  
+`cd openwrt`  
+`./scripts/feeds update -a`  
+`./scripts/feeds install -a` 
 
-`./scripts/feeds install -a`
+2)  Perform `make menuconfig` and go to "Target Profile" in the main menu. Select "TP-LINK TL-MR3020" or "-3040", according to your hardware. Exit by pressing ESC ESC two time and confirm saving the config.
 
-2. Perform `make menuconfig` and go to "Target Profile" in the main menu. Select "TP-LINK TL-MR3020" or "-3040", according to your hardware. Exit by pressing ESC ESC two time and confirm saving the config.
-3. Perform `make defconfig` (that creates general configuration of the build system including a check of dependencies and prerequisites for your selected system
-4. Now you can already build your system with default settings/environment (it can take from 1 to 3 hours depend on your host performance, internet connection speed and other factors...
+3)  Perform `make defconfig` (that creates general configuration of the build system including a check of dependencies and prerequisites for your selected system
+
+4)  Now you can already build your system with default settings/environment (it can take from 1 to 3 hours depend on your host performance, internet connection speed and other factors...
 
 `time make`
-5. `make menuconfig` and select:
+
+5)  `make menuconfig` and select:
 - Base System -> block-mount (\*)
 - Base System -> Boot Loaders -> uboot ( )   *<--  remove selection*
 - Kernel Modules -> Filesystems -> kmod-fs-ext4 (\*)
@@ -48,7 +52,18 @@ Also you can select a lot of additional items depend of what you need for your e
 - Utilities -> digitemp (M)
 - Utilities -> haserl (M)
 - Utilities -> oww (M)
-- Utilities -> file (M)
+
 6. `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
+=======
+
+6)  Create file ` ~openwrt/files/etc/config/fstab` and ...... in order to have overlay filesystem (pivot overlay) on USB flash drive
+
+7)  `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files* 
+If build process aborts with error (of course not related with unavailable downloads) - sometimes it helps full rebuild: `make dirclean` and then `make` again
+
+8)  After the build process completed successfully - you can install OpenWrt "\*-squashfs-factory.bin" firmware from `~openwrt/bin/ar71xx/` using manufacturer's WebGUI like a regular firmware update. Wait for the progress bar to finish twice (the device will reset itself in the process).  
+If your device is already on OpenWrt - just copy the firmware .bin file to `/tmp` and perform `mtd -r write /tmp/your_firmware_file.bin firmware`
+
+9)  Connect ethernet directly to you device and perform `telnet 192.168.1.1`.
 
 
