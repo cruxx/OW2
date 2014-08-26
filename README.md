@@ -13,7 +13,7 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 
 ### Below are steps to build and configure OpenWRT:
 
-0)  If you start from scratch, first you need to install all required packets. Check http://wiki.openwrt.org/doc/howto/buildroot.exigence for prerequisites for your exact system. Below is Ubuntu-1404LTS-64bit example:
+0)  If you start from scratch, first you need to install all required packets on your host. Check http://wiki.openwrt.org/doc/howto/buildroot.exigence for prerequisites for your exact system. Below is Ubuntu-1404LTS-64bit example:
 
 `sudo apt-get install git-core build-essential subversion libncurses5-dev zlib1g-dev gawk intltool gcc-multilib flex`
 
@@ -53,8 +53,7 @@ Also you can select a lot of additional items depend of what you need for your e
 - Utilities -> haserl (M)
 - Utilities -> oww (M)
 
-6. `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
-=======
+`time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
 
 6)  Create file ` ~openwrt/files/etc/config/fstab` and ...... in order to have overlay filesystem (pivot overlay) on USB flash drive
 
