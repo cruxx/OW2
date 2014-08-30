@@ -48,10 +48,10 @@ Also you can select a lot of additional items depend of what you need for your e
 - Network -> IP Addresses and Names -> ddns-scripts (M)
 - Network -> Web Servers/Proxies  -> lighttpd (M) -> lighttpd-mod-\* (M)  *<--  put (M) on all lighttpd modules that you need*
 - Network -> wpad (\*) *if you need full IEEE 802.1x Authenticator/Supplicant for enterprise Wi-Fi networks, otherwise select*   wpad-mini (\*)
-- Utilities -> filemanager -> mc (M)
-- Utilities -> digitemp (M)
+- Utilities -> filemanager -> mc (M) * (? - no in latest OpenWRT, need to check ?)
+- Utilities -> digitemp (M) * (? - no in latest OpenWRT, need to check ?)
 - Utilities -> haserl (M)
-- Utilities -> oww (M)
+- Utilities -> oww (M) * (? - no in latest OpenWRT, need to check ?)
 
 `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
 
