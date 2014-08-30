@@ -34,7 +34,7 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 
 5)  `make menuconfig` and select:
 - Base System -> block-mount (\*)
-- Base System -> Boot Loaders -> uboot ( )   *<--  remove selection*
+- Boot Loaders -> uboot ( )   *<--  remove selection*
 - Kernel Modules -> Filesystems -> kmod-fs-ext4 (\*)
 - Kernel Modules -> USB Support -> kmod-usb-storage-extras (\*), kmod-usb-uhci (\*)
 
