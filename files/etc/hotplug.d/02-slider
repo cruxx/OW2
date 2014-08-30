@@ -1,0 +1,41 @@
+#!/bin/sh
+
+# put the script into /etc/hotplug.d/button
+
+#
+#	original script was taken from here:  forum.openwrt.org/viewtopic.php?pid=189097#p189097  author: dddesign
+#
+
+if [ -f /tmp/slider_waiting_state ]; then exit 0
+fi
+touch /tmp/slider_waiting_state
+sleep 1
+logger "log: $BUTTON -- $ACTION"
+#logger $(grep -e "sw1.*in.*hi" /sys/kernel/debug/gpio)
+#logger $(grep -e "sw2.*in.*hi" /sys/kernel/debug/gpio)
+#logger "xxx"
+
+if [ $BUTTON = 'BTN_0' ] || [ $BUTTON = 'BTN_1' ]; then 
+	logger "slider event"
+	rm  /tmp/slider_waiting_state
+	if grep -qe "sw2.*in.*hi" /sys/kernel/debug/gpio ; then
+		if grep -qe "sw1.*in.*hi" /sys/kernel/debug/gpio ; then
+			# AP
+			logger AP
+			# /root/set_wan_wifi.sh /root/wifi_sta_secret
+		else
+			# 3G
+			logger 3G
+			/root/set_wan_usbmodem.sh /root/3g_opt /root/wifi_ap_secret
+			/etc/init.d/network reload
+			wifi
+		fi
+	else
+		# WISP
+		logger WISP
+		/root/set_wan_wifi.sh /root/wifi_sta_secret /root/wifi_ap_secret
+		/etc/init.d/network reload
+		sleep 1
+		wifi
+	fi
+fi
