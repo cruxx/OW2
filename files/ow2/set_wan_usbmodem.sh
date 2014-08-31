@@ -69,6 +69,7 @@ else
 	mkdir $TMP_CFG_PATH
 fi
 
+# if not (ls -l | grep "--> /etc/config") then
 #ln -s -b $TMP_CFG_PATH/network /etc/config/network
 #ln -s -b $TMP_CFG_PATH/wireless /etc/config/wireless
 
