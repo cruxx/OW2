@@ -14,8 +14,8 @@ config dnsmasq
 	option leasefile '/tmp/dhcp.leases'
 	option resolvfile '/tmp/resolv.conf.auto'
 
-config dhcp 'wilan'
-        option interface 'wilan'
+config dhcp 'lan'
+        option interface 'lan'
 	option start '100'
 	option limit '100'
 	option leasetime '12h'
