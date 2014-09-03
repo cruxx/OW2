@@ -1,6 +1,0 @@
-device	'/dev/ttyUSB0'
-apn	'put_apn_here'
-username	'put_username_here'
-password	'put_password_here'
-
-
