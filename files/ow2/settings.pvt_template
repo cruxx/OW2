@@ -1,0 +1,21 @@
+# The line with "option" keyword will be copy to corresponding config as is.
+# After the last option's string of each section must be line feed.
+
+lan_options:
+	option ipaddr	'192.168.2.1'
+
+3g_options:
+	option device	'/dev/ttyUSB0'
+	option apn	'put_apn_here'
+	option username	'put_username_here'
+	option password	'put_password_here'
+
+ap_wifi_options:
+	option ssid	'put_ap_ssid_here'
+	option key	'put_ap_key_here'
+
+sta_wifi_options:
+	option ssid	'put_sta_ssid_here'
+	option key	'put_sta_key_here'
+
+#end
