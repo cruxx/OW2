@@ -1,25 +1,25 @@
 #!/bin/sh /etc/rc.common
 
-# put the script into /etc/init.d and perform /etc/init.d/button_slider enable
+# put the script into /etc/init.d 
+# and perform: /etc/init.d/button_slider enable
 
 START=19
 boot() {
 
 if grep -qe "sw2.*in.*hi" /sys/kernel/debug/gpio ; then
-	if grep -qe "sw1.*in.*hi" /sys/kernel/debug/gpio ; then
-		# AP
-		logger AP
-		/root/set_wan_wifi.sh /root/wifi_sta_secret /root/wifi_ap_secret
-		# not implemented yet, acts as WISP
-	else
-		# 3G
-		logger 3G
-		/root/set_wan_usbmodem.sh /root/3g_opt /root/wifi_ap_secret
-	fi
+  if grep -qe "sw1.*in.*hi" /sys/kernel/debug/gpio ; then
+	# AP
+	logger "slider in AP position"
+	/ow2/set_network_config.sh /ow2/settings.pvt AP
+  else
+	# 3G
+	logger "slider in 3G position"
+	/ow2/set_network_config.sh /ow2/settings.pvt 3G
+  fi
 else
 	# WISP
-	logger WISP
-	/root/set_wan_wifi.sh /root/wifi_sta_secret /root/wifi_ap_secret
+	logger "slider in WISP position"
+	/ow2/set_network_config.sh /ow2/settings.pvt WISP
 fi
 }
 
