@@ -25,22 +25,26 @@ config interface 'lan'
 	option ip6assign '60'
 	option proto 'static'
 	option netmask '255.255.255.0'
-$(get_option $1 lan_options)\n"
+$(get_option $1 lan_options)
+"
 
 if [ "$2" != "AP" ]; then
 NETWRK_COMMON=$NETWRK_COMMON"        option type 'bridge'
-        option ifname 'eth0'\n"
+        option ifname 'eth0'
+"
 fi
 
 if [ "$2" = "3G" ]; then 
 NETWRK_WAN="
 config interface 'wan'
 	option proto	'3g'
-$(get_option $1 3g_options)\n"
+$(get_option $1 3g_options)
+"
 else
 NETWRK_WAN="
 config interface 'wan'
-	option proto	'dhcp'\n"
+	option proto	'dhcp'
+"
 fi
 
 echo "$NETWRK_COMMON $NETWRK_WAN" > $TMP_CFG_PATH/network
@@ -65,7 +69,8 @@ config wifi-iface
 	option network  'lan'
 	option mode     'ap'
 	option encryption 'psk2'
-$(get_option $1 ap_wifi_options)\n"
+$(get_option $1 ap_wifi_options)
+"
 
 if [ "$2" = "WISP" ]; then
 WRLSS_STA="
@@ -74,7 +79,8 @@ config wifi-iface
 	option network  'wan'
 	option mode     'sta'
 	option encryption 'psk2'
-$(get_option $1 sta_wifi_options)\n"
+$(get_option $1 sta_wifi_options)
+"
 fi
 
 echo "$WRLSS_COMMON $WRLSS_STA" > $TMP_CFG_PATH/wireless
