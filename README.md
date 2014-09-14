@@ -58,7 +58,7 @@ Also you can select a lot of additional items depend of what you need for your e
 
 `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
 
-6)  Create file ` ~openwrt/files/etc/config/fstab` and ...... in order to have overlay filesystem (pivot overlay) on USB flash drive
+6)  Create file ` ~openwrt/files/etc/config/fstab` and ...(will be updated soon)... in order to have overlay filesystem (pivot overlay) on USB flash drive
 
 7)  `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files* 
 If build process aborts with error (of course not related with unavailable downloads) - sometimes it helps full rebuild: `make dirclean` and then `make` again
