@@ -58,14 +58,18 @@ Also you can select a lot of additional items depend of what you need for your e
 
 `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files*
 
-6)  Create file ` ~openwrt/files/etc/config/fstab` and ...(will be updated soon)... in order to have overlay filesystem (pivot overlay) on USB flash drive
+6)  (optional) Create file ` ~openwrt/files/etc/config/fstab` and ...(will be updated soon)... in order to have overlay filesystem (pivot overlay) on USB flash drive
 
 7)  `time make V=s > build.log 2>errors.log`  *it will create also build log and errors log in corresponding files* 
 If build process aborts with error (of course not related with unavailable downloads) - sometimes it helps full rebuild: `make dirclean` and then `make` again
 
-8)  After the build process completed successfully - you can install OpenWrt "\*-squashfs-factory.bin" firmware from `~openwrt/bin/ar71xx/` using manufacturer's WebGUI like a regular firmware update. Wait for the progress bar to finish twice (the device will reset itself in the process).  
+8)  After the build process completed successfully - you can install OpenWrt "\*-squashfs-factory.bin" firmware from `~/youpathtoprojects/OW2/openwrt/bin/ar71xx/` using manufacturer's WebGUI like a regular firmware update. Wait for the progress bar to finish twice (the device will reset itself in the process).  
 If your device is already on OpenWrt - just copy the firmware .bin file to `/tmp` and perform `mtd -r write /tmp/your_firmware_file.bin firmware`
 
-9)  Connect ethernet directly to you device and perform `telnet 192.168.1.1`.
+9)  Connect ethernet directly to you device and perform `telnet 192.168.1.1`. After that use `passwd` command to set a password to be able to connect through `ssh` and to copy files by using `scp`
 
+10) Copy all files from `files/` directory to corresponding places on your device. Check all shell scripts have execution permission, perform `chmod +x scriptname` if not. If your device is MR3040 v1 (without slider) - need to correct script in `/etc/init.d/` with only one option and also no need to copy to `/etc/hotplug.d/button`
 
+11) Copy all packages from `~/youpathtoprojects/OW2/openwrt/bin/ar71xx/packages` to ext4-formatted USB flash, insert it to your device, mount it and install all package you need by `opkg update; opkg install thepackageswhatyouneed` (remember to check free space on device's flash or use overlay filesystem on USB flash as in step #6). The file `/etc/opkg.conf` should be corrected properly to point to your USB flash.
+
+12) to be continued...
