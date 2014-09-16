@@ -39,7 +39,8 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 - Kernel Modules -> USB Support -> kmod-usb-storage-extras (\*), kmod-usb-uhci (\*)
 
 Also you can select a lot of additional items depend of what you need for your exact system. Below are some examples:
-- Kernel Modules -> USB Support -> kmod-usb-serial ->  (M)
+- Kernel Modules -> USB Support -> kmod-usb-serial ->  (M) *<--  for 3G modems and other usb to serial converters*
+- Kernel Modules -> USB Support -> kmod-usb-serial-option ->  (M) *<--  for 3G modems*
 - Kernel Modules -> I2C support -> (M)   *<--  if you need i2c support - put (M) on required items*
 - Kernel Modules -> W1 support ->  (M)   *<--  if you need 1-wire support - put (M) on required items*
 - Multimedia -> mjpg-streamer (M)
@@ -68,8 +69,10 @@ If your device is already on OpenWrt - just copy the firmware .bin file to `/tmp
 
 9)  Connect ethernet directly to you device and perform `telnet 192.168.1.1`. After that use `passwd` command to set a password to be able to connect through `ssh` and to copy files by using `scp`
 
-10) Copy all files from `files/` directory to corresponding places on your device. Check all shell scripts have execution permission, perform `chmod +x scriptname` if not. If your device is MR3040 v1 (without slider) - need to correct script in `/etc/init.d/` with only one option and also no need to copy to `/etc/hotplug.d/button`
+10) Copy all files from `files/` directory to corresponding places on your device. Check all shell scripts have execution permission, perform `chmod +x scriptname` if not. Enable init script by `/etc/init.d/button_slider enable`. If your device is MR3040 v1 (without slider) - need to correct the script in `/etc/init.d/` with only one option and also no need to copy to `/etc/hotplug.d/button`
 
 11) Copy all packages from `~/youpathtoprojects/OW2/openwrt/bin/ar71xx/packages` to ext4-formatted USB flash, insert it to your device, mount it and install all package you need by `opkg update; opkg install thepackageswhatyouneed` (remember to check free space on device's flash or use overlay filesystem on USB flash as in step #6). The file `/etc/opkg.conf` should be corrected properly to point to your USB flash.
 
-12) to be continued...
+12) for 3G/4G usb modem support need to install the following: `opkg install comgt usb-modeswitch kmod-usb-serial-option` (don't forget to update package list for opkg first: `opkg update`
+
+13) to be continued...
