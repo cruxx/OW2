@@ -50,7 +50,7 @@ Also you can select a lot of additional items depend of what you need for your e
 - Network -> IP Addresses and Names -> ddns-scripts (M)
 - Network -> Web Servers/Proxies  -> lighttpd (M) -> lighttpd-mod-\* (M)  *<--  put (M) on all lighttpd modules that you need*
 - Network -> wpad (\*) *if you need full IEEE 802.1x Authenticator/Supplicant for enterprise Wi-Fi networks, otherwise select*   wpad-mini (\*)
-- Utilities -> filemanager -> mc (M)  *(? - no in latest OpenWRT, need to check ?)*
+- Utilities -> mc (M)
 - Utilities -> comgt (M)  *<--  for 3G modems*
 - Utilities -> digitemp (M)  *(? - no in latest OpenWRT, need to check ?)*
 - Utilities -> haserl (M)
