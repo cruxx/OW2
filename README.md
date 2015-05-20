@@ -15,7 +15,7 @@ Our objective is to obtain fully configured small device based on TP-LINK MR3020
 
 0)  If you start from scratch, first you need to install all required packets on your host. Check http://wiki.openwrt.org/doc/howto/buildroot.exigence for prerequisites for your exact system. Below is Ubuntu-1404LTS-64bit example:
 
-`sudo apt-get install git-core build-essential subversion libncurses5-dev zlib1g-dev gawk intltool gcc-multilib flex`
+`sudo apt-get install git-core build-essential subversion libncurses5-dev zlib1g-dev gawk intltool gcc-multilib flex libssl-dev`
 
 1)  Download the latest OpenWRT repo snapshot and all feeds by following commands:
 
