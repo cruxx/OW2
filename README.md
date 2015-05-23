@@ -43,6 +43,7 @@ Also you can select a lot of additional items depend of what you need for your e
 - Kernel Modules -> USB Support -> kmod-usb-serial-option ->  (M) *<--  for 3G modems*
 - Kernel Modules -> I2C support -> (M)   *<--  if you need i2c support - put (M) on required items*
 - Kernel Modules -> W1 support ->  (M)   *<--  if you need 1-wire support - put (M) on required items*
+- Kernel Modules -> Video support -> (M) *<--  if you need webcam support - put (M) on required items*
 - Multimedia -> mjpg-streamer (M)
 - Multimedia -> motion (M)
 - Network -> File Transfer -> curl (M)
