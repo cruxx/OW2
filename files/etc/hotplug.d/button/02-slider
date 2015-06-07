@@ -1,6 +1,8 @@
 #!/bin/sh
 
 # put the script into /etc/hotplug.d/button
+# the slider config is for MR3040 v2
+# if your device is MR3020 then swap sw2 and sw1
 
 if [ -f /tmp/slider_waiting_state ]; then exit 0
 fi

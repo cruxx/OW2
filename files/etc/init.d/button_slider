@@ -2,6 +2,8 @@
 
 # put the script into /etc/init.d 
 # and perform: /etc/init.d/button_slider enable
+# the slider config is for MR3040 v2
+# if your device is MR3020 then swap sw2 and sw1
 
 START=19
 boot() {
